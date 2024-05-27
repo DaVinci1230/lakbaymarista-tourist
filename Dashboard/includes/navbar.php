@@ -46,6 +46,16 @@
             <span>Add Destinations</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="uploadgallery.php">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>Upload Gallery</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="deletegallery.php">
+        <i class="fa fa-times" aria-hidden="true"></i>
+            <span>Delete Gallery</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="users.php">
         <i class="fa fa-user" aria-hidden="true"></i>
             <span>Users</span></a>

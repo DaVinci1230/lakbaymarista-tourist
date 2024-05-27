@@ -63,6 +63,30 @@ $conn->close();
         .login a {
             color: rgb(255, 255, 255);
         }
+
+        .booked {
+            color: black;
+        }
+
+        .rating-section {
+            margin-top: 20px;
+        }
+
+        .star {
+            font-size: 2rem;
+            cursor: pointer;
+            color: lightgray;
+        }
+
+        .star.rated,
+        .star:hover,
+        .star:hover~.star {
+            color: gold;
+        }
+
+        .rating-summary {
+            margin-top: 10px;
+        }
     </style>
 
 
@@ -159,7 +183,7 @@ $conn->close();
             <div class="swiper-wrapper">
 
                 <section class="islands swiper-slide">
-                    <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/432110673_287846981003039_4133516281026849524_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF5fdG4AwaMquFB6zHhZ0GvPahvx5J9j349qG_Hkn2Pfqxu0pBavKLnpR72cIto95a0-MFUoEcLkXa6h5NK2_Ir&_nc_ohc=70WTtQ32BHwQ7kNvgEoHQdn&_nc_ht=scontent-hkg4-1.xx&oh=00_AYB6JmB1HrRXrIEawvVLtT3res2NDLADm3VyKsYjgo0__Q&oe=6647F636" alt="" class="islands__bg">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCPDChuIMI5FXn4MRSkdkW5_BpJxZaLM1B7FrXQ9SxH_v4pYscZS_GkEZW69D1cx0DGe56wZAc6lqR171melyqdXFO89p0_vaklaBY8qPJNLZ8QpoxRGSarwZhtlVeOZ9ILLaPbqvYDUtc/s1600/surallah.jpg" alt="" class="islands__bg">
 
                     <div class="islands__container bd-container">
                         <div class="islands__data">
@@ -174,7 +198,7 @@ $conn->close();
 
 
                 <section class="islands swiper-slide">
-                    <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/432084176_287847317669672_9092270557578000862_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEAgp4OdxJjW3RJTSaA4YQfmA8vczLq4zCYDy9zMurjMLUCx_12E2CyqKDTm31aO0-GILTaqlUdOtcPocwisoQt&_nc_ohc=GdyyQvJ4r8cQ7kNvgEVi9uM&_nc_ht=scontent-hkg1-2.xx&oh=00_AYCqWPIwl67_3jB_RpINB_z_w24EdNb0w8cqEEQkpalYVg&oe=6647C90B" alt="" class="islands__bg">
+                    <img src="https://www.surallah.gov.ph/wp-content/uploads/2019/01/5-1024x578.png" alt="" class="islands__bg">
 
                     <div class="islands__container bd-container">
                         <div class="islands__data">
@@ -186,7 +210,7 @@ $conn->close();
                     </div>
                 </section>
                 <section class="islands swiper-slide">
-                    <img src="https://scontent-mnl1-1.xx.fbcdn.net/v/t39.30808-6/432156389_287847484336322_4685623601550315455_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGOtVWLlNKfBsnv8tlNzu5G9bj8xNhmI3n1uPzE2GYjeVd1i23IO3if97P2kAVwXg6kA53CFxxkHMPDI6gOWTtH&_nc_ohc=R3CXbEFhzSkQ7kNvgEwkCOc&_nc_ht=scontent-mnl1-1.xx&oh=00_AYBfdgRJYuBM5wl8tdtswPerTsh25uUakChELNFpdGp-og&oe=6647C163" alt="" class="islands__bg">
+                    <img src="https://www.surallah.gov.ph/wp-content/uploads/2019/01/I-love-Surallah-1.jpg" alt="" class="islands__bg">
 
                     <div class="islands__container bd-container">
                         <div class="islands__data">
@@ -204,9 +228,9 @@ $conn->close();
         <!--========== CONTROLS ==========-->
         <div class="controls gallery-thumbs">
             <div class="controls__container swiper-wrapper">
-                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/432110673_287846981003039_4133516281026849524_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF5fdG4AwaMquFB6zHhZ0GvPahvx5J9j349qG_Hkn2Pfqxu0pBavKLnpR72cIto95a0-MFUoEcLkXa6h5NK2_Ir&_nc_ohc=70WTtQ32BHwQ7kNvgEoHQdn&_nc_ht=scontent-hkg4-1.xx&oh=00_AYB6JmB1HrRXrIEawvVLtT3res2NDLADm3VyKsYjgo0__Q&oe=6647F636" alt="" class="controls__img swiper-slide">
-                <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/432084176_287847317669672_9092270557578000862_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEAgp4OdxJjW3RJTSaA4YQfmA8vczLq4zCYDy9zMurjMLUCx_12E2CyqKDTm31aO0-GILTaqlUdOtcPocwisoQt&_nc_ohc=GdyyQvJ4r8cQ7kNvgEVi9uM&_nc_ht=scontent-hkg1-2.xx&oh=00_AYCqWPIwl67_3jB_RpINB_z_w24EdNb0w8cqEEQkpalYVg&oe=6647C90B" alt="" class="controls__img swiper-slide">
-                <img src="https://scontent-mnl1-1.xx.fbcdn.net/v/t39.30808-6/432156389_287847484336322_4685623601550315455_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGOtVWLlNKfBsnv8tlNzu5G9bj8xNhmI3n1uPzE2GYjeVd1i23IO3if97P2kAVwXg6kA53CFxxkHMPDI6gOWTtH&_nc_ohc=R3CXbEFhzSkQ7kNvgEwkCOc&_nc_ht=scontent-mnl1-1.xx&oh=00_AYBfdgRJYuBM5wl8tdtswPerTsh25uUakChELNFpdGp-og&oe=6647C163" alt="" class="controls__img swiper-slide">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCPDChuIMI5FXn4MRSkdkW5_BpJxZaLM1B7FrXQ9SxH_v4pYscZS_GkEZW69D1cx0DGe56wZAc6lqR171melyqdXFO89p0_vaklaBY8qPJNLZ8QpoxRGSarwZhtlVeOZ9ILLaPbqvYDUtc/s1600/surallah.jpg" alt="" class="controls__img swiper-slide">
+                <img src="https://www.surallah.gov.ph/wp-content/uploads/2019/01/5-1024x578.png" alt="" class="controls__img swiper-slide">
+                <img src="https://www.surallah.gov.ph/wp-content/uploads/2019/01/I-love-Surallah-1.jpg" alt="" class="controls__img swiper-slide">
             </div>
         </div>
     </main>
@@ -244,16 +268,13 @@ $conn->close();
                                             <?php echo $is_booked ? 'Booked' : 'Booking'; ?>
                                         </button>
                                     </div>
-                                    <div class="rating">
-                                        <div class="rating-prc" itemscope="itemscope" itemprop="aggregateRating" itemtype="//schema.org/AggregateRating">
-                                            <meta itemprop="worstRating" content="1">
-                                            <meta itemprop="bestRating" content="10">
-                                            <meta itemprop="ratingCount" content="10">
-                                            <div class="rtp">
-                                                <div class="rtb"><span style="width:100%"></span></div>
-                                            </div>
-                                            <div class="num" itemprop="ratingValue" content="10">10</div>
+                                    <div class="rating-section">
+                                        <div id="starRating">
+                                            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                                <span class="star" data-value="<?php echo $i; ?>">&#9733;</span>
+                                            <?php endfor; ?>
                                         </div>
+                                        <div id="ratingSummary" class="rating-summary"></div>
                                     </div>
                                     <div class="tsinfo">
                                         <div class="imptdt">
@@ -375,6 +396,10 @@ $conn->close();
         <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
         <input type="hidden" name="place_name" value="surralah">
     </form>
+    <form id="ratingForm" action="/rating.php" method="POST" style="display: none;">
+            <input type="hidden" name="place_name" value="<?php echo htmlspecialchars($place_name); ?>">
+            <input type="hidden" name="rating" id="ratingInput">
+        </form>
 
 
     <script src="../assets/js/gsap.min.js"></script>
@@ -392,6 +417,73 @@ $conn->close();
                 document.getElementById('bookingForm').submit();
             }
         }
+        function handleRating() {
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', function () {
+                const rating = this.getAttribute('data-value');
+                submitRating(rating);
+            });
+
+            star.addEventListener('mouseover', function () {
+                stars.forEach(s => s.classList.remove('rated'));
+                this.classList.add('rated');
+                let prev = this.previousElementSibling;
+                while (prev) {
+                    prev.classList.add('rated');
+                    prev = prev.previousElementSibling;
+                }
+            });
+
+            star.addEventListener('mouseout', function () {
+                stars.forEach(s => s.classList.remove('rated'));
+            });
+        });
+    }
+
+    function submitRating(rating) {
+        const placeName = "<?php echo htmlspecialchars($place_name); ?>";
+        const formData = new FormData();
+        formData.append('place_name', placeName);
+        formData.append('rating', rating);
+
+        fetch('/rating.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                fetchRatingSummary();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    async function fetchRatingSummary() {
+        const response = await fetch('/rating_summary.php?place_name=<?php echo urlencode($place_name); ?>');
+        const data = await response.json();
+        const ratingSummary = document.getElementById('ratingSummary');
+        if (data.success) {
+            ratingSummary.innerHTML = `
+                <p>Average Rating: ${data.average_rating} (${data.total_ratings} ratings)</p>
+                ${data.rating_percentages.map((percentage, index) => `
+                    <p>${index + 1} star: ${percentage}%</p>
+                `).join('')}
+            `;
+        } else {
+            ratingSummary.innerHTML = '<p>Could not fetch rating summary.</p>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        handleRating();
+        fetchRatingSummary();
+    });
     </script>
 
 </body>

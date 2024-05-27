@@ -63,6 +63,30 @@ $conn->close();
         .login a {
             color: rgb(255, 255, 255);
         }
+
+        .booked {
+            color: black;
+        }
+
+        .rating-section {
+            margin-top: 20px;
+        }
+
+        .star {
+            font-size: 2rem;
+            cursor: pointer;
+            color: lightgray;
+        }
+
+        .star.rated,
+        .star:hover,
+        .star:hover~.star {
+            color: gold;
+        }
+
+        .rating-summary {
+            margin-top: 10px;
+        }
     </style>
 
 
@@ -244,16 +268,13 @@ $conn->close();
                                             <?php echo $is_booked ? 'Booked' : 'Booking'; ?>
                                         </button>
                                     </div>
-                                    <div class="rating">
-                                        <div class="rating-prc" itemscope="itemscope" itemprop="aggregateRating" itemtype="//schema.org/AggregateRating">
-                                            <meta itemprop="worstRating" content="1">
-                                            <meta itemprop="bestRating" content="10">
-                                            <meta itemprop="ratingCount" content="10">
-                                            <div class="rtp">
-                                                <div class="rtb"><span style="width:100%"></span></div>
-                                            </div>
-                                            <div class="num" itemprop="ratingValue" content="10">10</div>
+                                    <div class="rating-section">
+                                        <div id="starRating">
+                                            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                                <span class="star" data-value="<?php echo $i; ?>">&#9733;</span>
+                                            <?php endfor; ?>
                                         </div>
+                                        <div id="ratingSummary" class="rating-summary"></div>
                                     </div>
                                     <div class="tsinfo">
                                         <div class="imptdt">
@@ -373,6 +394,10 @@ $conn->close();
         <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
         <input type="hidden" name="place_name" value="matutum">
     </form>
+    <form id="ratingForm" action="/rating.php" method="POST" style="display: none;">
+            <input type="hidden" name="place_name" value="<?php echo htmlspecialchars($place_name); ?>">
+            <input type="hidden" name="rating" id="ratingInput">
+        </form>
 
 
     <script src="../assets/js/gsap.min.js"></script>
@@ -390,6 +415,73 @@ $conn->close();
                 document.getElementById('bookingForm').submit();
             }
         }
+        function handleRating() {
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', function () {
+                const rating = this.getAttribute('data-value');
+                submitRating(rating);
+            });
+
+            star.addEventListener('mouseover', function () {
+                stars.forEach(s => s.classList.remove('rated'));
+                this.classList.add('rated');
+                let prev = this.previousElementSibling;
+                while (prev) {
+                    prev.classList.add('rated');
+                    prev = prev.previousElementSibling;
+                }
+            });
+
+            star.addEventListener('mouseout', function () {
+                stars.forEach(s => s.classList.remove('rated'));
+            });
+        });
+    }
+
+    function submitRating(rating) {
+        const placeName = "<?php echo htmlspecialchars($place_name); ?>";
+        const formData = new FormData();
+        formData.append('place_name', placeName);
+        formData.append('rating', rating);
+
+        fetch('/rating.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                fetchRatingSummary();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    async function fetchRatingSummary() {
+        const response = await fetch('/rating_summary.php?place_name=<?php echo urlencode($place_name); ?>');
+        const data = await response.json();
+        const ratingSummary = document.getElementById('ratingSummary');
+        if (data.success) {
+            ratingSummary.innerHTML = `
+                <p>Average Rating: ${data.average_rating} (${data.total_ratings} ratings)</p>
+                ${data.rating_percentages.map((percentage, index) => `
+                    <p>${index + 1} star: ${percentage}%</p>
+                `).join('')}
+            `;
+        } else {
+            ratingSummary.innerHTML = '<p>Could not fetch rating summary.</p>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        handleRating();
+        fetchRatingSummary();
+    });
     </script>
 
 </body>
