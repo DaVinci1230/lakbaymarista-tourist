@@ -287,18 +287,15 @@ session_start();
               <div class="package-card">
 
                 <figure class="card-banner">
-                  <img src="./assets/images/packages/package-1.jpg" alt="A Hidden Paradise Spring in Tupi, South Cotabato" loading="lazy">
+                  <img src="./assets/images/gallery/7-falls.jpg" alt="A Hidden Paradise Falls in Lake Sebu, South Cotabato" loading="lazy">
                 </figure>
 
                 <div class="card-content">
 
-                  <h3 class="h3 card-title">A Hidden Paradise Spring in Tupi, South Cotabato</h3>
+                  <h3 class="h3 card-title">A Hidden Paradise Falls in Lake Sebu, South Cotabato</h3>
 
                   <p class="card-text">
-                    Escape from the hustle and bustle of the city.
-                    Visit Shellrock Garden Resort in Tupi, South
-                    Cotabato
-                    Shellrock Garden Resort
+                  The Seven Falls site a.k.a. “Dongon 7 Falls” is an enchanting attraction in Lake Sebu. It’s a series of majestic falls that were uniquely cascaded together by Mother Nature.
                   </p>
 
                   <ul class="card-meta-list">
@@ -352,7 +349,7 @@ session_start();
                     <span>/ per person</span>
                   </p>
 
-                  <button class="btn btn-secondary">Book Now</button>
+                  <a href="./destinations/7-falls.php" class="btn btn-secondary">Book Now</a>
 
                 </div>
 
@@ -425,7 +422,7 @@ session_start();
                     <span>/ per person</span>
                   </p>
 
-                  <button class="btn btn-secondary">Book Now</button>
+                  <a href="./destinations/lakeholon.php" class="btn btn-secondary">Book Now</a>
 
                 </div>
 
@@ -499,7 +496,7 @@ session_start();
                     <span>/ per person</span>
                   </p>
 
-                  <button class="btn btn-secondary">Book Now</button>
+                  <a href="./destinations/sgfarm.php" class="btn btn-secondary">Book Now</a>
 
                 </div>
 

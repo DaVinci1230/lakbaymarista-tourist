@@ -1,60 +1,45 @@
 <?php
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "lakbaymarista";
+require './db/db_connection.php';
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+if (isset($_POST["submit"])) {
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+  $destinationName = $_POST['destinationName'];
+  $destinationLocation = $_POST['destinationLocation'];
+  $destinationRating = $_POST['destinationRating'];
 
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    $email = mysqli_real_escape_string($conn, $email);
+  $targetDir = "destinations/";
+  $targetFile = $targetDir . basename($_FILES["destinationImage"]["name"]);
+  $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-    $sql = "SELECT id, firstname, lastname, email, mobile, password, access_level FROM users WHERE email=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $hashed_password = $row['password'];
-        $user_id = $row['id'];
-        $access_level = $row['access_level'];
+  $check = getimagesize($_FILES["destinationImage"]["tmp_name"]);
+  if ($check !== false) {
 
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['loggedin'] = true;
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['fname'] = $row['firstname'];
-            $_SESSION['lname'] = $row['lastname'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['mobile'] = $row['mobile'];
-            $_SESSION['access_level'] = $access_level;
-            $conn->close();
-            if ($access_level == 4) {
-                header('Location: dashboard.php');
-            } else {
-                header('Location: index.php');
-            }
-            exit;
-        } else {
-            $conn->close();
-            header('Location: login.php?error=invalid_credentials');
-            exit;
-        }
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+      echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+      exit();
     } else {
-        $conn->close();
-        header('Location: login.php?error=invalid_credentials');
-        exit;
+
+      if (move_uploaded_file($_FILES["destinationImage"]["tmp_name"], $targetFile)) {
+
+        $stmt = $conn->prepare("INSERT INTO destinations (name, location, image, rating) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssd", $destinationName, $destinationLocation, $targetFile, $destinationRating);
+        $stmt->execute();
+        $stmt->close();
+
+        header("Location: destination.php");
+        exit();
+      } else {
+        echo "Sorry, there was an error uploading your file.";
+      }
     }
+  } else {
+    echo "File is not an image.";
+    exit();
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -416,8 +401,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           echo "<h2>" . $row['name'] . "</h2>";
           echo "<p>" . $row['location'] . "</p>";
           echo "<div class='review-and-idr'>";
-          echo "<div class='review'><i class='fa fa-star'></i> " . $row['rating'] . " | 851 review</div>";
-          echo "<p>P0</p>";
+          echo "<div class='review'><i class='fa fa-star'></i> " . $row['rating'] . "</div>";
           echo "</div>";
           echo "</div>";
           echo "</div>";

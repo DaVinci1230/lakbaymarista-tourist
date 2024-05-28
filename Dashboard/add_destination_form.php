@@ -102,7 +102,6 @@ button:hover {
                 echo "<p>" . $row['location'] . "</p>";
                 echo "<div class='review-and-idr'>";
                 echo "<div class='review'><i class='fa fa-star'></i> " . $row['rating'] . " | review</div>";
-                echo "<p></p>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
