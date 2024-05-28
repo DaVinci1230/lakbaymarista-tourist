@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2024 at 08:19 AM
+-- Generation Time: May 28, 2024 at 03:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,7 +56,22 @@ INSERT INTO `bookings` (`id`, `user_full_name`, `place_name`, `booking_date`) VA
 (9, 'poging nilalang', '7-Falls', '2024-05-25 14:11:54'),
 (10, 'poging nilalang', '7-Falls', '2024-05-25 14:11:57'),
 (11, 'poging nilalang', '7-Falls', '2024-05-25 14:12:04'),
-(12, 'poging nilalang', 'gensanTuna', '2024-05-25 14:14:04');
+(12, 'poging nilalang', 'gensanTuna', '2024-05-25 14:14:04'),
+(20, 'Ben Florence A.J E. Til', 'divinemercy', '2024-05-27 20:36:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_submissions`
+--
+
+CREATE TABLE `contact_submissions` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -83,9 +98,18 @@ CREATE TABLE `ratings` (
   `user_id` int(11) NOT NULL,
   `user_full_name` varchar(255) NOT NULL,
   `place_name` varchar(255) NOT NULL,
-  `rating` int(11) NOT NULL CHECK (`rating` >= 1 and `rating` <= 5),
+  `rating` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ratings`
+--
+
+INSERT INTO `ratings` (`id`, `user_id`, `user_full_name`, `place_name`, `rating`, `created_at`) VALUES
+(1, 11, 'Ben Florence A.J E. Til', '7-Falls', 5, '2024-05-27 19:45:54'),
+(2, 11, 'Ben Florence A.J E. Til', 'lakeholon', 5, '2024-05-27 20:07:35'),
+(3, 11, 'Ben Florence A.J E. Til', 'sgfarm', 5, '2024-05-27 20:36:02');
 
 -- --------------------------------------------------------
 
@@ -128,6 +152,12 @@ ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_submissions`
+--
+ALTER TABLE `contact_submissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `destinations`
 --
 ALTER TABLE `destinations`
@@ -161,7 +191,13 @@ ALTER TABLE `addcomment`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `contact_submissions`
+--
+ALTER TABLE `contact_submissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `destinations`
@@ -173,7 +209,7 @@ ALTER TABLE `destinations`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
