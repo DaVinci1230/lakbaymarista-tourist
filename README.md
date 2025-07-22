@@ -57,4 +57,9 @@ Contributions are welcome! If you'd like to contribute to LakbayMarista Tourist,
 
 This project is licensed under the [MIT License](LICENSE).
 
+
+
+
+## #Contributors/Collaborators: Benflorence AJ. Til, Crisan Josh Buendicho, Angelo Habaradas, Ford Bryant Sadio, 
+
 ---
