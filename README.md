@@ -1,7 +1,7 @@
 ---
 
 # LakbayMarista Tourist
-
+Live View = https://lakbaymarista.online/
 LakbayMarista Tourist is a web application designed to help tourists explore and discover various attractions and destinations around Marista. Whether you're a local looking for hidden gems or a visitor planning your itinerary, LakbayMarista Tourist provides you with essential information to make your journey unforgettable.
 
 ## Features
@@ -63,3 +63,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## #Contributors/Collaborators: Benflorence AJ. Til, Crisan Josh Buendicho, Angelo Habaradas, Ford Bryant Sadio, 
 
 ---
+
